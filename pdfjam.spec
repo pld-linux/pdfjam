@@ -13,8 +13,6 @@ Requires:	tetex-latex
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define
-
 %description
 PDFjam is a small collection of shell scripts which provide a simple
 interface to some of the functionality of the excellent pdfpages
