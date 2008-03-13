@@ -28,13 +28,13 @@ available are:
 In every case, source files are left unchanged.
 
 %description -l pl.UTF-8
-PDFjam jest małym zbiorem skryptów szelowych dostarczających prosty
-interfejs do kilku funkcjonalności pdfLaTeXa. W tym momencie dostępne
+PDFjam jest małym zbiorem skryptów powłoki dostarczających prosty
+interfejs do kilku funkcji pdfLaTeXa. W tym momencie dostępne
 narzędzia to:
-- pdfnup, umożliwia umieszczanie wielu stron PDF na jednej stronie
-  podobnie jak psnup dla PostSript.
-- pdfjoin, umożliwia łączenie plików PDF w pojedyńczy plik
-- pdf90, pozwala obracać strony w pliku PDF
+- pdfnup - umożliwia umieszczanie wielu stron PDF na jednej stronie,
+  podobnie jak robi to psnup dla PostScriptu,
+- pdfjoin - umożliwia łączenie plików PDF w pojedynczy plik,
+- pdf90 - pozwala obracać strony w pliku PDF.
 
 Każde z tych narzędzi pozostawia pliki źródłowe niezmienione.
 
@@ -44,8 +44,8 @@ Każde z tych narzędzi pozostawia pliki źródłowe niezmienione.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_mandir}/man1,%{_bindir}}
-install -p scripts/* $RPM_BUILD_ROOT%{_bindir}/
-install -p man1/* $RPM_BUILD_ROOT%{_mandir}/man1/
+install -p scripts/* $RPM_BUILD_ROOT%{_bindir}
+install -p man1/* $RPM_BUILD_ROOT%{_mandir}/man1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -53,5 +53,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc pdfdroplets.png PDFjam-README.html VERSION
-%{_mandir}/man1/*
 %attr(755,root,root) %{_bindir}/*
+%{_mandir}/man1/*
