@@ -1,12 +1,12 @@
 Summary:	Utilities for join, rotate and align PDFs
 Summary(pl.UTF-8):	Narzędzia do łączenia, rotacji i wyrównywania plików PDF
 Name:		pdfjam
-Version:	1.20
+Version:	2.08
 Release:	1
 License:	GPL v2
 Group:		Applications/Printing
-Source0:	http://www.warwick.ac.uk/go/pdfjam/%{name}_%{version}.tgz
-# Source0-md5: 3e443fd2c0063330313c1c079053e622
+Source0:	http://www.warwick.ac.uk/go/pdfjam/%{name}_208.tgz
+# Source0-md5:	7df075df7f129091f826275ce8c1f374
 URL:		http://www2.warwick.ac.uk/fac/sci/statistics/staff/academic/firth/software/pdfjam/
 Requires:	tetex-format-pdflatex
 Requires:	tetex-latex
@@ -43,8 +43,10 @@ Każde z tych narzędzi pozostawia pliki źródłowe niezmienione.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_mandir}/man1,%{_bindir}}
-install -p scripts/* $RPM_BUILD_ROOT%{_bindir}
+
+install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_bindir},%{_mandir}/man1}
+install -p pdfjam.conf $RPM_BUILD_ROOT%{_sysconfdir}
+install -p bin/* $RPM_BUILD_ROOT%{_bindir}
 install -p man1/* $RPM_BUILD_ROOT%{_mandir}/man1
 
 %clean
@@ -53,5 +55,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc pdfdroplets.png PDFjam-README.html VERSION
-%attr(755,root,root) %{_bindir}/*
-%{_mandir}/man1/*
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/pdfjam.conf
+%attr(755,root,root) %{_bindir}/pdf*
+%{_mandir}/man1/pdf*.1*
